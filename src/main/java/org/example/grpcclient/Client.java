@@ -1,8 +1,9 @@
 package org.example.grpcclient;
 
-import com.example.api_gateway.grpc.MyGrpcServiceGrpc;
-import com.example.api_gateway.grpc.TestRequest;
-import com.example.api_gateway.grpc.TestResponse;
+
+import com.example.grpcclient.grpc.MyGrpcServiceGrpc;
+import com.example.grpcclient.grpc.TestRequest;
+import com.example.grpcclient.grpc.TestResponse;
 import io.grpc.ManagedChannel;
 import org.springframework.stereotype.Component;
 
