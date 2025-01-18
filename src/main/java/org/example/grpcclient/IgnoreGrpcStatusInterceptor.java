@@ -14,9 +14,9 @@ public class IgnoreGrpcStatusInterceptor implements ClientInterceptor {
                 Listener<RespT> wrappedListener = new ForwardingClientCallListener.SimpleForwardingClientCallListener<>(responseListener) {
                     @Override
                     public void onClose(Status status, Metadata trailers) {
-                        if (status.getCode() == Status.Code.INTERNAL) {
-                            Metadata.Key<String> myHeaderKey = Metadata.Key.of("grpc-status", Metadata.ASCII_STRING_MARSHALLER);
-                            trailers.put(myHeaderKey, "0");
+                        if (status.getCode() == Status.Code.INTERNAL && !trailers.containsKey(Metadata.Key.of("grpc-status", Metadata.ASCII_STRING_MARSHALLER))) {
+                            Metadata.Key<String> statusKey = Metadata.Key.of("grpc-status", Metadata.ASCII_STRING_MARSHALLER);
+                            trailers.put(statusKey, "0");
                             super.onClose(Status.OK, trailers);
                         } else {
                             super.onClose(status, trailers);
