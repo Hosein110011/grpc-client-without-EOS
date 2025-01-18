@@ -18,8 +18,8 @@ public class Client {
         userServiceBlockingStub = MyGrpcServiceGrpc.newBlockingStub(userServiceChannel);
     }
 
-    public TestResponse getUser() {
-        var getUserRequest = TestRequest.newBuilder().setData("ٌWowwwwwww!!!!!!!!!!!").build();
-        return userServiceBlockingStub.testGateway(getUserRequest);
+    public TestResponse getResponse() {
+        var testRequest = TestRequest.newBuilder().setData("Wowwwwwww!!!!!!!!!!!").build();
+        return userServiceBlockingStub.testGateway(testRequest);
     }
 }
