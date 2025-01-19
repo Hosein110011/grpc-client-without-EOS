@@ -13,14 +13,23 @@ public class GrpcClientApplication {
     @Autowired
     Client client;
 
+    @Autowired
+    GrpcClient grpcClient;
+
     public static void main(String[] args) {
         SpringApplication.run(GrpcClientApplication.class, args);
     }
 
 
     @GetMapping("/client")
-    public String get() {
+    public String getRestResponse() {
         System.out.println("received " + client.getResponse());
+        return "Wow!";
+    }
+
+    @GetMapping("/grpc/client")
+    public String getGrpcResponse() {
+        System.out.println("received " + grpcClient.getResponse());
         return "Wow!";
     }
 
